@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+  <!-- Make it compatible to mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Predicting death cause after a myocardial infraction/heart attack</title>
+  
+</head>
+<center>
+<body style="background-image:url('https://raw.githubusercontent.com/RenuMaan/images/main/blue-smooth-wall-textured-background_53876-106133.avif');">
+ <div class="login">
+	<h1 style="color:Violet;">Predicting death cause following a myocardial infraction/heart attack</h1>
+  
+     <div class="split left">
+      <div class="centered">
+
+         <!-- Action is where the data is sent. In our case, predict page.
+         If action is omitted, it assumed to be the current page -->
+         <form action="{{ url_for('predict')}}"method="post">
+    	
+	  <h3 style="color:pink;">Patient details and basic inputs from the tests and medication</h3>
+            <ul>
+             <label style="color:white;" for="AGE">age</label> 
+             <input type="text" name="AGE" placeholder="Between 30-90" required="required" /><br>
+             <label style="color:white;" for="SEX">Gender</label>
+             <select id="SEX" name="SEX" required="required" >
+             <option style="display:none">
+             <option value="0">Female</option>
+             <option value="1">Male</option>
+             </select><br>
+             <label style="color:white;" for="S_AD_ORIT">systolic BP at ICU</label> 
+            <input type="text" name="S_AD_ORIT" placeholder="in units mmHg" required="required" /><br>
+             <label style="color:white;" for="L_BLOOD">WBC Count</label> 
+            <input type="text" name="L_BLOOD" placeholder="billions per liter" required="required" /><br>
+            <label style="color:white;" for="K_SH_POST">Cardiogentic schock at time time of admission to ICU</label>
+            <select id="K_SH_POST" name="K_SH_POST" required="required"><br>
+            <option style="display:none">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+            </select><br>
+            <label style="color:white;" for="NITR_S">Use of liqui nitrate by emergency team</label>
+            <select id="NITR_S" name="NITR_S" required="required">
+            <option style="display:none">
+            <option value="0">no</option>
+            <option value="1">yes</option><br>
+            </select><br>
+            <label style="color:white;" for="ant_im">Presence of an anterior myocardial infarction in ecg (left ventricular)(ECG changes in leads V1: V4 )</label>
+            <select id="ant_im" name="ant_im" required="required">
+            <option style="display:none">
+            <option value="0">There is no infraction in this location</option>
+            <option value="1">QRS has no changes</option>
+            <option value="2">QRS is like QR-complex</option>
+            <option value="3">QRS is Qr-complex</option>
+            <option value="4">QRS is like QS-complex</option>
+            </select><br>
+            <label style="color:white;" for="NA_R_1_n">Use of opioid drugs in the ICU in the first hours</label>
+            <select id="NA_R_1_n" name="NA_R_1_n" required="required">
+            <option style="display:none">
+            <option value="0">no</option>
+            <option value="1">once</option>
+            <option value="2">twice</option>
+            <option value="3">three times</option>
+            <option value="4">four times</option>
+            </select><br> 
+            <label style="color:white;" for="ASP_S_n">Use of Acetylsalicylic acid in the ICU</label>
+            <select id="ASP_S_n" name="ASP_S_n" required="required">
+            <option style="display:none">
+            <option value="0">no</option>
+            <option value="1">yes</option>
+            </select><br>
+            <label style="color:white;" for="MP_TP_POST">Paroxysms of atrial fibrillation at the time of admission to ICU</label>        
+            <select id="MP_TP_POST" name="MP_TP_POST" required="required">
+            <option style="display:none">
+            <option value="0">no</option>
+            <option value="1">yes</option>
+            </select><br> 
+            <label style="color:white;" for="n_p_ecg_12">Complete RBBB</label> 
+            <select id="n_p_ecg_12" name="n_p_ecg_12" required="required">
+            <option style="display:none">
+            <option value="0">no</option>
+            <option value="1">yes</option>
+            </select><br> 
+            <label style="color:white;" for="R_AB_1_n">Relapse of pain in the 1st hour of hospital period</label> 
+            <select id="R_AB_1_n" name="R_AB_1_n" required="required">
+            <option style="display:none">
+            <option value="0">no relapse</option>
+            <option value="1">Only once</option>
+            <option value="2">Twice</option>
+            <option value="3">Three or more times</option>
+            </select><br>
+            <label style="color:white;" for="R_AB_3_n">Relapse of pain in the 3rd day of hospital period</label> 
+            <select id="R_AB_3_n" name="R_AB_3_n" required="required">
+            <option style="display:none">
+            <option value="0">no relapse</option>
+            <option value="1">Only once</option>
+            <option value="2">Twice</option>
+            <option value="3">Three or more times</option>
+            </select><br>
+            <label style="color:white;" for="IM_PG_P">Right ventricular mycardial infraction</label> 
+            <select id="IM_PG_P" name="IM_PG_P" required="required">
+            <option style="display:none">
+            <option value="0">no relapse</option>
+            <option value="1">yes</option>
+            </select><br>
+            <label style="color:white;" for="ritm_ecg_p_01">ECG rhythm at the time of admission to hospital:sinus(with a heart rate 60-90)</label> 
+            <select id="ritm_ecg_p_01" name="ritm_ecg_p_01" required="required">
+            <option style="display:none">
+            <option value="0">no relapse</option>
+            <option value="1">yes</option>
+            </select><br>
+            </ul>
+
+            <h3 style="color:pink;">Data from the medical history</h3>
+            <ol>
+            <label style="color:white;" for="IBS_POST">Coronary heart disease in recent weeks</label>
+            <select id="IBS_POST" name="IBS_POST" required="required">
+            <option style="display:none">
+            <option value="0">there was no</option>
+            <option value="1">exertional angina pectoris</option>
+            <option value ="2">unstable angina pectoris</option>
+            </select><br>
+            <label style="color:white;" for="zab_leg_02">Obstructive chronic bronchitis in the anamnesis</label>
+            <select id="zab_leg_02" name="zab_leg_02" required="required">
+            <option style="display:none">
+            <option value="0">no</option>
+            <option value="1">yes</option>
+            </select><br>
+            <label style="color:white;" for="DLIT_AG">Duration of hypertension</label>
+            <select id="DLIT_AG" name="DLIT_AG" required="required">
+            <option style="display:none">
+            <option value="0">There was no artrial hypertension</option>
+            <option value="1">for last one year</option>
+            <option value="2">for last two years</option>
+            <option value="3">for last three year</option>
+            <option value="4">four years</option>
+            <option value="5">five years</option>
+            <option value="6">6-10 years</option>
+            <option value="7">more than 10 years</option>
+            </select><br>
+            <label style="color:white;" for="STENOK_AN">Exertional angina pectoris</label>
+            <select id="STENOK_AN" name="STENOK_AN" required="required">
+            <option style="display:none">
+            <option value="0">Never</option>
+            <option value="1">During last year</option>
+            <option value="2">one year ago</option>
+            <option value="3">two years ago</option>
+            <option value="4">three years ago</option>
+            <option value="5">4-5 years ago</option>
+            <option value="6">During last year</option>
+            </select><br>
+              <label style="color:white;" for="ZSN_A">Presence of chronic Heart failure (HF) in the anamnesis</label>
+               <select id="ZSN_A" name="ZSN_A" required="required">
+               <option style="display:none">
+               <option value="0">there is no chronic heart failure</option>
+               <option value="1">Ist stage</option>
+               <option value="2">heart failure due to right ventricular systolic dysfunction)</option>
+               <option value="3">heart failure due to left ventricular systolic dysfunction)</option>
+               <option value="4">heart failure due to left and right ventricular systolic dysfunction)</option>
+               </select><br>
+
+              </ol>
+           </div>
+        </div>
+
+        <div class="split right">
+           <div class="centered">
+              <h3 style="color:pink;">Complications of myocardial infraction/heart attack</h3>
+               <ol>
+
+              <label style="color:white;" for="FIBR_JELUD">Ventricular Tachycardia</label>
+               <select id="FIBR_JELUD" name="FIBR_JELUD" required="required">
+               <option style="display:none">
+               <option value="0">no</option>
+               <option value="1">yes</option>
+               </select><br>
+              <label style="color:white;" for="RAZRIV">Myocardial rupture</label>
+              <select id="RAZRIV" name="RAZRIV" required="required">
+               <option style="display:none">
+               <option value="0">no</option>
+               <option value="1">yes</option>
+               </select><br>
+              <label style="color:white;" for="ZSN">Chronic heart faliure</label>
+               <select id="ZSN" name="ZSN" required="required">
+               <option style="display:none">
+               <option value="0">no</option>
+               <option value="1">yes</option>
+               </select><br>
+              <label style="color:white;" for="REC_IM">Relapse of Myocardial Infraction</label>
+               <select id="REC_IM" name="REC_IM" required="required">
+               <option style="display:none">
+               <option value="0">no</option>
+               <option value="1">yes</option>
+               </select><br>
+               <label style="color:white;" for="P_IM_STEN">Post-infarction angina</label>
+               <select id="P_IM_STEN" name="P_IM_STEN" required="required">
+               <option style="display:none">
+               <option value="0">no</option>
+               <option value="1">yes</option>
+               </select><br>
+               <label style="color:white;" for="OTEK_LANC">Edeme(swelling caused by fluid trapped in your body's tissues)</label>
+               <select id="OTEK_LANC" name="OTEK_LANC" required="required">
+               <option style="display:none">
+               <option value="0">no</option>
+               <option value="1">was observed in ICU</option>
+               <option value="1">developed later as complication</option>
+               </select><br>
+               </ol>
+
+     <h2 style="color:Violet;">Predict the outcome</h2>
+         <style> 
+           input[type=submit], input[type=reset] {
+           background-color: green;
+           border: none;
+           font-size: 15px;
+           color: pink;
+           padding: 10px 20px;
+           text-decoration: none;
+           margin: 4px 2px;
+           border-radius: 15px;
+           cursor: pointer;}
+          </style>
+        <input type="reset" value="Reset">
+        <input type="submit" value="Submit">
+        </p>
+        
+    </form>
+
+   <br>
+   <br>
+   <h4 style="color:Orange;">
+   {{ prediction_text }} </h4>
+     </div>
+   </div>
+
+ </div>
+
+
+</body>
+</center>
+</html>
