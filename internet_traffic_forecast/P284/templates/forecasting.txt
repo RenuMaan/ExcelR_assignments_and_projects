@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+  <!-- Make it compatible to mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>forecasting the number of visitors on an ecommerce website</title>
+  
+</head>
+<center>
+<body background="/static/images/background.jpg" ;>
+
+
+   <div class="login">
+	<h1 style="color:Violet;">forecasting the number of visitors on an ecommerce website</h1>
+	<form action="{{ url_for('forecast')}} "method="post" >
+        
+             <label style="color:white;" for="forecasting steps">forecasting steps</label> 
+             <input type="number" name="number of days" placeholder="number of days since the last recorded data" required="required" /><br>
+             </select><br>
+
+	<h2 style="color:Violet;">click submit to forecast</h2>
+         <style> 
+           input[type=submit], input[type=reset] {
+           background-color: green;
+           border: none;
+           font-size: 15px;
+           color: pink;
+           padding: 10px 20px;
+           text-decoration: none;
+           margin: 4px 2px;
+           border-radius: 15px;
+           cursor: pointer;}
+          </style>
+        <input type="reset" value="Reset">
+        <input type="submit" value="Submit">
+        </p>
+
+
+ 	</form>
+
+      <br>
+  	 
+        <img src="{{image}}"/>
+</div>	
+
+
+</body>
+</center>
+</html>
