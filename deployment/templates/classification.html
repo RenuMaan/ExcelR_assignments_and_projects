@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html >
+<head>
+<style>
+fieldset {
+  background_color: #000080;
+  display: block;
+  margin-left: 200px;
+  margin-right: 200px;
+  padding-top: 0.35em;
+  padding-bottom: 0.625em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  border: 2px groove (internal value);
+}
+
+legend {
+  background-color: gray;
+  color: white;
+  padding: 50px 10px;
+}
+
+input {
+  margin: 0px;
+}
+</style>
+
+
+  <!-- Make it compatible to mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+</style>
+
+
+  <title>Classfication of the world Development data</title>
+  
+</head>
+<center>
+<body background="/static/images/background.jpg" ;>
+
+   <div class="login">
+	<h1 style="color:magenta;">Classfication of the world Development data</h1>
+	<form action="{{ url_for('result')}} "method="post" >
+        <fieldset>
+         
+           <div class="row">
+            <div class="col">
+             <ol>
+        
+             <label style="color:pink;" for="Birth Rate"><b> Birth Rate </b> </label> 
+             <input type="text" name="Birth Rate" placeholder="insert value 0.007 to 0.053" required="required" /><br>
+             </select><br>
+             <label style="color:pink;" for="CO2 Emissions"><b> CO2 Emissions </b></label> 
+             <input type="text" name="CO2 Emissions" placeholder="insert value 7million to 8.3 million" required="required" /><br>
+             </select><br>
+             <label style="color:pink;" for="GDP"><b> GDP </b></label> 
+             <input type="text" name="GDP" placeholder="insert value 63.1m to 16 trillion" required="required" /><br>
+             </select><br>
+             <label style="color:pink;" for="Health Exp % GDP"> <b> Health Exp % GDP </b> </label> 
+             <input type="text" name="Health Exp % GDP" placeholder="insert value 0.008 to 0.225" required="required" /><br>
+             </select><br>
+             <label style="color:pink;" for="Health Exp/Capita"><b> Health Exp/Capita </b></label> 
+             <input type="text" name="Health Exp/Capita" placeholder="insert value 2 to 9908" required="required" /><br>
+             </select><br>
+             <label style="color:pink;" for="Infant Mortality Rate"><b> Infant Mortality Rate </b></label> 
+             <input type="text" name="Infant Mortality Rate" placeholder="insert value 0.002 to 0.141" required="required" /><br>
+             </select><br>
+
+            </div>
+            <div class="col">
+             
+             
+             <label style="color:pink;" for="Internet Usage"><b> Internet Usage </b></label> 
+             <input type="text" name="Internet Usage" placeholder="insert value 0 to 1" required="required" /><br>
+             </select><br>
+             <label style="color:pink;" for="Mobile Phone Usage"><b> Mobile Phone Usage </b></label> 
+             <input type="text" name="Mobile Phone Usage" placeholder="insert value 0 to 2.9" required="required" /><br>
+             </select><br>
+             <label style="color:pink;" for="Population Total"><b> Population Total </b></label> 
+             <input type="text" name="Population Total" placeholder="insert value 18876 to 1 billion" required="required" /><br>
+             </select><br>
+             <label style="color:pink;" for="Population Urban"><b> Population Urban </b></label> 
+             <input type="text" name="Population Urban" placeholder="insert value 0.082 to 1" required="required" /><br>
+             </select><br>
+             <label style="color:pink;" for="Tourism Inbound"><b> Tourism Inbound </b></label> 
+             <input type="text" name="Tourism Inbound" placeholder="insert value 700,000 to 200 billions" required="required" /><br>
+             </select><br>
+             <label style="color:pink;" for="Tourism Outbound"><b> Tourism Outbound </b></label> 
+             <input type="text" name="Tourism Outbound" placeholder="insert value 200,000 to 126 billions" required="required" /><br>
+             </select><br>
+             <label style="color:pink;" for="life_expectancy"><b> life_expectancy </b></label> 
+             <input type="text" name="life_expectancy" placeholder="insert value 37 to 88" required="required" /><br>
+             </select><br>
+
+	     </ol>
+            </div>
+            </div>
+
+         <style> 
+           input[type=submit], input[type=reset] {
+           background-color: green;
+           border: none;
+           font-size: 15px;
+           color: pink;
+           padding: 10px 20px;
+           text-decoration: none;
+           margin: 4px 2px;
+           border-radius: 15px;
+           cursor: pointer;}
+          </style>
+        <input type="reset" value="Reset">
+        <input type="submit" value="Submit">
+        </p>
+
+   
+
+ 	</form>
+        </fieldset>
+   
+   </div>
+  </div>  
+
+        <h1 style="color:magenta;">Predicted cluster is : {{ prediction }}</h1>  
+        	
+
+</body>
+</center>
+</html>
